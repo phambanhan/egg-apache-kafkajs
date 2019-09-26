@@ -1,6 +1,6 @@
 {
   "name": "egg-apache-kafkajs",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "apache-kafkajs plugin for egg",
   "eggPlugin": {
     "name": "kafka"
@@ -13,12 +13,6 @@
     "kafkajs"
   ],
   "dependencies": {
-    "assert": "^1.4.1",
-    "avsc": "^5.1.2",
-    "await-event": "^2.1.0",
-    "bluebird": "^3.5.1",
-    "events": "^1.1.1",
-    "extend": "^3.0.1",
     "kafkajs": "^1.10.0"
   },
   "devDependencies": {
