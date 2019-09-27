@@ -19,7 +19,24 @@ or
 $ yarn add egg-apache-kafkajs
 ```
 
-## Usage
+## Configuration
+
+```js
+// {app_root}/config/config.default.js
+exports.kafka = {
+  options: {
+    clientId: 'clientId',
+    brokers: [ 'broker:9092' ],
+    connectionTimeout: 3000,
+  },
+  consumers: [
+    {
+      groupId: 'consumer-groupId',
+      topics: [ 'topic1' ],
+    },
+  ],
+};
+```
 
 ```js
 // {app_root}/config/plugin.js
@@ -29,14 +46,30 @@ exports.kafka = {
 };
 ```
 
-## Configuration
+## Usage
 
 ```js
-// {app_root}/config/config.default.js
-config.kafka = {
-    clientId: 'clientId',
-    brokers: ['localhost:9092']
-  };
+// Producer
+const kafka = this.ctx.app.kafka;
+await kafka.send({
+  topic: 'topic1',
+  messages: [{
+    value: 'Hello World',
+  }],
+});
+```
+
+```js
+// Producer
+const kafka = this.ctx.app.kafka;
+const producer = kafka.producer();
+await producer.connect();
+await producer.send({
+  topic: 'topic1',
+  messages: [{
+    value: 'Hello World',
+  }],
+});
 ```
 
 ## License

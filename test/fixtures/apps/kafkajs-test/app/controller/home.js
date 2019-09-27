@@ -11,11 +11,13 @@ class HomeController extends Controller {
       await producer.send({
         topic: 'topic1',
         messages: [{
-          value: 'Hello World'
+          value: 'Hello World',
         }],
       });
+
       this.ctx.body = 'Success';
-    } catch(err) {
+    } catch (err) {
+      console.log('err', err);
       this.ctx.status = 500;
     }
   }

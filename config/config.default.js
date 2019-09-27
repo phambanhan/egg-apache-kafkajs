@@ -11,8 +11,17 @@ module.exports = appInfo => {
   config.kafka = {
     app: true,
     agent: false,
-    clientId: appInfo.name,
-    brokers: ['broker:9092']
+    options: {
+      clientId: appInfo.name,
+      brokers: [ 'broker:9092' ],
+      connectionTimeout: 3000,
+    },
+    consumers: [
+      {
+        groupId: 'consumer-groupId',
+        topics: [ 'topic1' ],
+      },
+    ],
   };
 
   return config;

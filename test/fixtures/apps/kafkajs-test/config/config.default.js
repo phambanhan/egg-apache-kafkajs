@@ -7,6 +7,15 @@
  */
 exports.keys = '_lssfsfsfs';
 exports.kafka = {
-  clientId: 'sm-oauth',
-  brokers: ['broker:9092']
+  options: {
+    clientId: 'clientId',
+    brokers: [ 'broker:9092' ],
+    connectionTimeout: 3000,
+  },
+  consumers: [
+    {
+      groupId: 'consumer-groupId',
+      topics: [ 'topic1' ],
+    },
+  ],
 };
